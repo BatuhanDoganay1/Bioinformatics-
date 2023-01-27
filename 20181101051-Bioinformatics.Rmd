@@ -1,0 +1,72 @@
+---
+title: "20181101051-Bioinformatics"
+author: "Batuhan Doğanay"
+date: "5/20/2022"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library("ape")
+```
+
+```{r}
+homosapiens <- read.GenBank("NM_003381.4", as.character = "TRUE")
+pongoapelii <- read.GenBank("XM_024248829.1", as.character = "TRUE")
+equuscaballus <- read.GenBank("XM_023633005.1", as.character = "TRUE")
+lutralutra <- read.GenBank("XM_047733983.1", as.character = "TRUE")
+caviaporcellus <- read.GenBank("XM_005003122.3", as.character = "TRUE")
+```
+
+
+```{r}
+seq1 = paste(homosapiens, collapse="")
+seq2 = paste(pongoapelii, collapse="")
+seq3 = paste(equuscaballus, collapse="")
+seq4 = paste(lutralutra, collapse="")
+seq5 = paste(caviaporcellus, collapse="")
+```
+
+```{r}
+library("Biostrings")
+```
+
+```{r}
+alocal<-pairwiseAlignment(pattern=seq1, subject=seq2, type="local")
+alocal
+
+aglobal<-pairwiseAlignment(pattern = seq1, subject = seq2, type="global")
+aglobal
+```
+
+```{r}
+blocal<-pairwiseAlignment(pattern = seq1, subject = seq3, type="local")
+blocal
+
+bglobal<-pairwiseAlignment(pattern = seq1, subject = seq3, type="global")
+bglobal
+```
+
+```{r}
+clocal<-pairwiseAlignment(pattern = seq1, subject = seq4, type="local")
+clocal
+
+cglobal<-pairwiseAlignment(pattern = seq1, subject = seq4, type="global")
+cglobal
+```
+
+```{r}
+dlocal<- pairwiseAlignment(pattern = seq1, subject = seq5, type="local")
+dlocal
+
+dglobal<- pairwiseAlignment(pattern = seq1, subject = seq5, type="global")
+dglobal
+```
+
+## SONUÇ
+
+### Scorları incelediğimiz en benzer türler Homosapiens ve Pongoapeliidir.
+### Scorları incelediğimiz en farklı türler Homosapiens ve Caviaporcellusdur.
